@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/dr-deuri-eye-clinic/static/css/main.f432e8d9.css",
-    "main.js": "/dr-deuri-eye-clinic/static/js/main.5f6d5220.js",
+    "main.css": "/dr-deuri-eye-clinic/static/css/main.86aaf01e.css",
+    "main.js": "/dr-deuri-eye-clinic/static/js/main.692285b5.js",
     "index.html": "/dr-deuri-eye-clinic/index.html",
-    "main.f432e8d9.css.map": "/dr-deuri-eye-clinic/static/css/main.f432e8d9.css.map",
-    "main.5f6d5220.js.map": "/dr-deuri-eye-clinic/static/js/main.5f6d5220.js.map"
+    "main.86aaf01e.css.map": "/dr-deuri-eye-clinic/static/css/main.86aaf01e.css.map",
+    "main.692285b5.js.map": "/dr-deuri-eye-clinic/static/js/main.692285b5.js.map"
   },
   "entrypoints": [
-    "static/css/main.f432e8d9.css",
-    "static/js/main.5f6d5220.js"
+    "static/css/main.86aaf01e.css",
+    "static/js/main.692285b5.js"
   ]
 }
