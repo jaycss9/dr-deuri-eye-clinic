@@ -170,11 +170,9 @@ function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "About Doctor", href: "#about" },
+    { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Why Choose Us", href: "#why-choose-us" },
-    { name: "Conditions", href: "#conditions" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Reviews", href: "#testimonials" },
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ];
