@@ -131,11 +131,11 @@ function Linkedin({ className, ...props }) {
 // GLOBAL CONSTANTS & PLACEHOLDERS
 // ==============================================================================
 // REPLACE ME: Update with the clinic's actual official phone number
-const PHONE_NUMBER_DISPLAY = "+91-XXXXXXXXXX";
-const PHONE_NUMBER_LINK = "tel:+91XXXXXXXXXX";
+const PHONE_NUMBER_DISPLAY = "+91-8473990626";
+const PHONE_NUMBER_LINK = "tel:+918473990626";
 
 // REPLACE ME: Update with the clinic's actual official WhatsApp number (with country code, no + or spaces)
-const WHATSAPP_LINK = "https://wa.me/91XXXXXXXXXX?text=Hello%20Dr.%20Deuri%20Clinic,%20I%20would%20like%20to%20book%20an%20eye%20consultation.";
+const WHATSAPP_LINK = "https://wa.me/918473990626?text=Hello%20Dr.%20Deuri%20Clinic,%20I%20would%20like%20to%20book%20an%20eye%20consultation.";
 
 // ==============================================================================
 // ANIMATION VARIANTS (Framer Motion)
@@ -512,8 +512,11 @@ function HeroSection() {
                       <MapPin className="w-4 h-4 text-medical-600" aria-hidden="true" />
                     </div>
                     <h3 className="text-base font-bold text-slate-900 mb-1">Narayanpur Clinic</h3>
+                    <p className="text-xs text-slate-600 mb-1 font-semibold text-medical-700">
+                      Dristi Opticals
+                    </p>
                     <p className="text-xs text-slate-600 mb-3">
-                      Main OPD Centre, Near Narayanpur Chariali, Assam
+                      Near Narayanpur Chariali, Assam (Call: <a href="tel:+916900345698" className="hover:underline text-medical-600 font-bold">+91-6900345698</a>)
                     </p>
                   </div>
                   <div className="pt-3 border-t border-medical-200/60 mt-2">
@@ -533,8 +536,11 @@ function HeroSection() {
                       <MapPin className="w-4 h-4 text-slate-600" aria-hidden="true" />
                     </div>
                     <h3 className="text-base font-bold text-slate-900 mb-1">Gohpur Clinic</h3>
+                    <p className="text-xs text-slate-600 mb-1 font-semibold text-medical-700">
+                      Laxmi Opticals
+                    </p>
                     <p className="text-xs text-slate-600 mb-3">
-                      Specialist Eye Care Centre, Gohpur Main Road, Assam
+                      Gohpur Main Road, Assam (Call: <a href="tel:+919365369051" className="hover:underline text-medical-600 font-bold">+91-9365369051</a>)
                     </p>
                   </div>
                   <div className="pt-3 border-t border-slate-200 mt-2">
@@ -1097,7 +1103,7 @@ function FAQSection() {
     {
       question: "What are the clinic OPD timings in Narayanpur and Gohpur?",
       answer:
-        "Dr. Hari Narayan Deuri consults at two dedicated locations daily from Monday to Saturday. The Narayanpur Clinic operates in the morning from 09:00 AM to 01:30 PM. The Gohpur Clinic operates in the evening from 03:30 PM to 07:30 PM. Emergency eye trauma appointments are prioritized."
+        "Dr. Hari Narayan Deuri consults at two dedicated locations daily from Monday to Saturday: Dristi Opticals (Narayanpur Clinic) in the morning from 09:00 AM to 01:30 PM, and Laxmi Opticals (Gohpur Clinic) in the evening from 03:30 PM to 07:30 PM. Emergency eye trauma appointments are prioritized."
     },
     {
       question: "Why is Dr. Hari Narayan Deuri considered the best eye doctor in Narayanpur and Gohpur?",
@@ -1247,15 +1253,20 @@ function ContactSection() {
                     <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
                       OPD Appointment Helpline
                     </p>
-                    <a
-                      href={PHONE_NUMBER_LINK}
-                      className="text-lg font-extrabold text-slate-900 hover:text-medical-600 transition-colors block mt-0.5"
-                    >
-                      {PHONE_NUMBER_DISPLAY}
-                    </a>
-                    <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded inline-block mt-1">
-                      REPLACE ME WITH ACTUAL NUMBER
-                    </span>
+                    <div className="flex flex-col gap-1 mt-1">
+                      <a
+                        href="tel:+918473990626"
+                        className="text-base font-extrabold text-slate-900 hover:text-medical-600 transition-colors block"
+                      >
+                        +91-8473990626
+                      </a>
+                      <a
+                        href="tel:+919954298387"
+                        className="text-base font-extrabold text-slate-900 hover:text-medical-600 transition-colors block"
+                      >
+                        +91-9954298387
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -1269,10 +1280,13 @@ function ContactSection() {
                       Narayanpur Clinic (Morning)
                     </p>
                     <p className="text-sm font-semibold text-slate-800 mt-0.5">
-                      Main Eye Clinic, Near Narayanpur Chariali, Narayanpur, Assam 784164
+                      Dristi Opticals, Near Narayanpur Chariali, Narayanpur, Assam 784164
                     </p>
-                    <p className="text-xs text-medical-700 font-bold mt-1">
-                      OPD: 09:00 AM – 01:30 PM (Mon-Sat)
+                    <p className="text-xs text-slate-600 font-semibold mt-1">
+                      Phone: <a href="tel:+916900345698" className="hover:underline text-medical-600 font-bold">+91-6900345698</a>
+                    </p>
+                    <p className="text-xs text-medical-700 font-bold mt-0.5">
+                      OPD Hours: 09:00 AM – 01:30 PM (Mon-Sat)
                     </p>
                   </div>
                 </div>
@@ -1287,10 +1301,13 @@ function ContactSection() {
                       Gohpur Clinic (Evening)
                     </p>
                     <p className="text-sm font-semibold text-slate-800 mt-0.5">
-                      Specialist Eye Centre, Gohpur Main Road, Gohpur, Assam 784168
+                      Laxmi Opticals, Gohpur Main Road, Gohpur, Assam 784168
                     </p>
-                    <p className="text-xs text-slate-700 font-bold mt-1">
-                      OPD: 03:30 PM – 07:30 PM (Mon-Sat)
+                    <p className="text-xs text-slate-600 font-semibold mt-1">
+                      Phone: <a href="tel:+919365369051" className="hover:underline text-slate-600 font-bold">+91-9365369051</a>
+                    </p>
+                    <p className="text-xs text-slate-700 font-bold mt-0.5">
+                      OPD Hours: 03:30 PM – 07:30 PM (Mon-Sat)
                     </p>
                   </div>
                 </div>
@@ -1446,11 +1463,11 @@ function Footer() {
             </h4>
             <div className="space-y-3 text-sm">
               <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
-                <p className="font-bold text-white">Narayanpur Morning Clinic</p>
+                <p className="font-bold text-white">Narayanpur (Dristi Opticals)</p>
                 <p className="text-medical-400 font-extrabold mt-0.5">09:00 AM – 01:30 PM</p>
               </div>
               <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
-                <p className="font-bold text-white">Gohpur Evening Clinic</p>
+                <p className="font-bold text-white">Gohpur (Laxmi Opticals)</p>
                 <p className="text-slate-200 font-extrabold mt-0.5">03:30 PM – 07:30 PM</p>
               </div>
               <p className="text-xs text-slate-500">Sunday Closed / Emergencies On Call</p>
@@ -1463,15 +1480,15 @@ function Footer() {
               Connect With Us
             </h4>
             <div className="space-y-3 text-sm">
-              <p className="text-slate-400">
-                Helpline Phone:{" "}
-                <a href={PHONE_NUMBER_LINK} className="text-white font-bold hover:underline">
-                  {PHONE_NUMBER_DISPLAY}
-                </a>
-              </p>
-              <p className="text-xs text-slate-500">
-                (Replace placeholder phone number with clinic official number)
-              </p>
+              <div className="text-slate-400 space-y-1">
+                <p>Doctor Helpline:</p>
+                <p className="text-white font-bold">
+                  <a href="tel:+918473990626" className="hover:underline">+91-8473990626</a>
+                </p>
+                <p className="text-white font-bold">
+                  <a href="tel:+919954298387" className="hover:underline">+91-9954298387</a>
+                </p>
+              </div>
               <div className="pt-2">
                 <p className="text-xs font-semibold text-slate-400 mb-2">Social Profiles:</p>
                 <div className="flex items-center gap-2.5">
