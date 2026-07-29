@@ -273,10 +273,10 @@ function Navbar() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/70 hover:border-emerald-300 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
               aria-label="Book appointment via WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
               <span>WhatsApp</span>
             </a>
           </div>
@@ -378,9 +378,9 @@ function Navbar() {
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md shadow-emerald-500/10"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4 text-emerald-600" />
                     <span>WhatsApp Booking</span>
                   </a>
                   <div className="text-center pt-2">
@@ -595,7 +595,7 @@ function AboutDoctorSection() {
               </div>
 
               {/* Floating experience badge */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-white p-5 rounded-2xl shadow-soft-xl border border-slate-100 flex items-center gap-4 max-w-xs">
+              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-white p-5 rounded-2xl shadow-soft-xl border border-slate-100 flex items-center gap-4 max-w-xs z-20">
                 <div className="w-12 h-12 rounded-xl bg-medical-500 text-white flex items-center justify-center shrink-0 font-bold text-lg">
                   8+
                 </div>
