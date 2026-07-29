@@ -570,8 +570,6 @@ function HeroSection() {
 // SUB-COMPONENT: ABOUT DOCTOR
 // ==============================================================================
 function AboutDoctorSection() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <section id="about" className="py-20 lg:py-28 bg-white" aria-label="About Dr. Hari Narayan Deuri">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -587,26 +585,13 @@ function AboutDoctorSection() {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-medical-100 to-medical-200 border-4 border-white shadow-soft-xl relative flex items-center justify-center bg-slate-50">
                 <img
-                  src="/images/doctor-placeholder.jpg"
+                  src={process.env.PUBLIC_URL + "/images/doctor-placeholder.jpg"}
                   alt="Dr. Hari Narayan Deuri - Best Eye Doctor in Narayanpur, Gohpur, and Bihpuriagaon, Assam"
                   className="w-full h-full object-cover object-center relative z-10"
-                  onLoad={() => setImageLoaded(true)}
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    setImageLoaded(false);
                   }}
                 />
-                {/* Elegant fallback graphic when placeholder image is not yet loaded */}
-                {!imageLoaded && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-medical-900/10 backdrop-blur-[2px]">
-                    <div className="w-24 h-24 rounded-full bg-white/90 shadow-md flex items-center justify-center text-medical-600 mb-4">
-                      <Stethoscope className="w-12 h-12" aria-hidden="true" />
-                    </div>
-                    <p className="text-sm font-bold text-slate-800 bg-white/95 px-4 py-2 rounded-xl shadow-sm animate-pulse">
-                      Loading Doctor Photo...
-                    </p>
-                  </div>
-                )}
               </div>
 
               {/* Floating experience badge */}
@@ -802,7 +787,9 @@ function ServicesSection() {
                     OPD Consultation Available
                   </span>
                   <a
-                    href={PHONE_NUMBER_LINK}
+                    href={`https://wa.me/918473990626?text=Hello%20Dr.%20Deuri%20Clinic,%20I%20would%20like%20to%20book%20an%20appointment%20for%20${encodeURIComponent(service.title)}.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs font-bold text-slate-700 hover:text-medical-600 inline-flex items-center gap-1 transition-colors"
                     aria-label={`Book appointment for ${service.title}`}
                   >
