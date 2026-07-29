@@ -11,7 +11,7 @@
  *   such as Next.js or Remix for native, zero-config SEO crawling and OG preview generation.
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -165,6 +165,8 @@ const staggerContainer = {
 // ==============================================================================
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -177,60 +179,104 @@ function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      // Section tracking for active state
+      const sections = ['home', 'about', 'services', 'why-choose-us', 'conditions', 'testimonials', 'faq', 'contact'];
+      let currentSection = 'home';
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Detect active section based on proximity to top of screen
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run once initially
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/80 backdrop-blur-md border-b border-slate-200/50 shadow-md shadow-slate-100/30 py-3"
+          : "bg-white border-b border-transparent py-5"
+      }`}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Brand Logo / Doctor Name */}
           <a
             href="#home"
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Dr. Hari Narayan Deuri Eye Specialist Clinic Home"
           >
-            <div className="w-11 h-11 rounded-xl bg-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/30 group-hover:bg-medical-600 transition-colors">
-              <Eye className="w-6 h-6" aria-hidden="true" />
+            <div className="relative flex items-center justify-center shrink-0">
+              {/* Decorative spinning gradient ring on hover */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-medical-400 to-blue-500 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-700 blur-[2px] shrink-0" />
+              <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-medical-600 to-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/20 shrink-0 transition-transform group-hover:scale-105 duration-300">
+                <Eye className="w-6 h-6 transition-transform group-hover:rotate-12 duration-300" aria-hidden="true" />
+              </div>
             </div>
             <div>
-              <span className="block text-lg font-bold text-slate-900 tracking-tight">
+              <span className="block text-lg font-extrabold text-slate-900 tracking-tight leading-none group-hover:text-medical-600 transition-colors">
                 Dr. Hari Narayan Deuri
               </span>
-              <span className="block text-xs font-semibold uppercase tracking-wider text-medical-600">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-medical-600 mt-1">
                 Eye Specialist • Assam
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden xl:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-medical-600 transition-colors py-2"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="hidden xl:flex items-center gap-1 bg-slate-50 border border-slate-100 p-1.5 rounded-2xl">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`text-xs font-bold tracking-tight transition-all duration-200 py-2 px-3.5 rounded-xl ${
+                    isActive
+                      ? "text-medical-700 bg-white shadow-sm"
+                      : "text-slate-600 hover:text-medical-600 hover:bg-white/50"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
           </div>
 
           {/* Action Buttons: Phone & WhatsApp */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <a
               href={PHONE_NUMBER_LINK}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-medical-700 bg-medical-50 hover:bg-medical-100 border border-medical-200/60 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200/70 hover:border-slate-300 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
               aria-label={`Call Dr. Hari Narayan Deuri at ${PHONE_NUMBER_DISPLAY}`}
             >
-              <Phone className="w-4 h-4 text-medical-600" aria-hidden="true" />
+              <Phone className="w-3.5 h-3.5 text-medical-600" aria-hidden="true" />
               <span>{PHONE_NUMBER_DISPLAY}</span>
             </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-md shadow-emerald-600/20"
+              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98]"
               aria-label="Book appointment via WhatsApp"
             >
-              <MessageCircle className="w-4 h-4" aria-hidden="true" />
+              <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
               <span>WhatsApp</span>
             </a>
           </div>
@@ -239,48 +285,91 @@ function Navbar() {
           <div className="flex xl:hidden items-center gap-2">
             <a
               href={PHONE_NUMBER_LINK}
-              className="md:hidden p-2.5 rounded-xl text-medical-700 bg-medical-50 border border-medical-200/60"
+              className="md:hidden p-2.5 rounded-xl text-medical-700 bg-medical-50 border border-medical-200/50 hover:bg-medical-100 transition-colors"
               aria-label="Call clinic"
             >
-              <Phone className="w-5 h-5" aria-hidden="true" />
+              <Phone className="w-5 h-5 animate-pulse" aria-hidden="true" />
             </a>
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none"
-              aria-expanded={mobileMenuOpen}
-              aria-label="Toggle mobile menu"
+              onClick={() => setMobileMenuOpen(true)}
+              className="p-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
+              aria-label="Open mobile menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <Menu className="w-6 h-6" />
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Slide-out Drawer */}
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25 }}
-              className="xl:hidden overflow-hidden border-t border-slate-100 py-4"
-            >
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
+            <>
+              {/* Drawer Backdrop overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setMobileMenuOpen(false)}
+                className="fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-xs xl:hidden"
+              />
+
+              {/* Drawer Content */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 26, stiffness: 220 }}
+                className="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white shadow-2xl xl:hidden flex flex-col p-6 border-l border-slate-100 overflow-y-auto"
+              >
+                {/* Header of Drawer */}
+                <div className="flex items-center justify-between pb-5 border-b border-slate-100">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-medical-600 to-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/10">
+                      <Eye className="w-5 h-5" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <span className="block text-sm font-extrabold text-slate-900 leading-none">Dr. H. N. Deuri</span>
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-medical-600 mt-1">Eye Clinic</span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:text-medical-600 hover:bg-medical-50 transition-colors"
+                    className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors"
+                    aria-label="Close menu"
                   >
-                    {link.name}
-                  </a>
-                ))}
-                <div className="pt-3 mt-2 border-t border-slate-100 flex flex-col sm:flex-row gap-3 px-4">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Navigation Links list */}
+                <div className="flex flex-col gap-1.5 py-6 flex-grow">
+                  {navLinks.map((link) => {
+                    const isActive = activeSection === link.href.slice(1);
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold transition-all duration-200 ${
+                          isActive
+                            ? "text-medical-600 bg-medical-50"
+                            : "text-slate-700 hover:text-medical-600 hover:bg-slate-50"
+                        }`}
+                      >
+                        <span>{link.name}</span>
+                        <ChevronDown className="w-4 h-4 -rotate-90 opacity-40" />
+                      </a>
+                    );
+                  })}
+                </div>
+
+                {/* Footer / CTA buttons in Drawer */}
+                <div className="pt-6 border-t border-slate-100 flex flex-col gap-3">
                   <a
                     href={PHONE_NUMBER_LINK}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold text-medical-700 bg-medical-50 border border-medical-200"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-medical-700 bg-medical-50 hover:bg-medical-100 border border-medical-200 transition-colors"
                   >
                     <Phone className="w-4 h-4" />
                     <span>Call: {PHONE_NUMBER_DISPLAY}</span>
@@ -289,14 +378,17 @@ function Navbar() {
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md shadow-emerald-500/10"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp Consultation</span>
+                    <span>WhatsApp Booking</span>
                   </a>
+                  <div className="text-center pt-2">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Mon - Sat OPD Schedule</span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </nav>
