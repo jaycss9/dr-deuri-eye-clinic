@@ -222,8 +222,8 @@ function Navbar() {
           >
             <div className="relative flex items-center justify-center shrink-0">
               {/* Decorative spinning gradient ring on hover */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-medical-400 to-blue-500 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-700 blur-[2px] shrink-0" />
-              <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-medical-600 to-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/20 shrink-0 transition-transform group-hover:scale-105 duration-300">
+              <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-medical-400 to-blue-500 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-700 blur-[2px] shrink-0" />
+              <div className="relative w-11 h-11 rounded-lg bg-gradient-to-tr from-medical-600 to-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/20 shrink-0 transition-transform group-hover:scale-105 duration-300">
                 <Eye className="w-6 h-6 transition-transform group-hover:rotate-12 duration-300" aria-hidden="true" />
               </div>
             </div>
@@ -238,14 +238,14 @@ function Navbar() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden xl:flex items-center gap-1 bg-slate-50 border border-slate-100 p-1.5 rounded-2xl">
+          <div className="hidden xl:flex items-center gap-1 bg-slate-50 border border-slate-100 p-1.5 rounded-lg">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`text-xs font-bold tracking-tight transition-all duration-200 py-2 px-3.5 rounded-xl ${
+                  className={`text-xs font-bold tracking-tight transition-all duration-200 py-2 px-3.5 rounded-md ${
                     isActive
                       ? "text-medical-700 bg-white shadow-sm"
                       : "text-slate-600 hover:text-medical-600 hover:bg-white/50"
@@ -261,7 +261,7 @@ function Navbar() {
           <div className="hidden xl:flex items-center gap-3">
             <a
               href={PHONE_NUMBER_LINK}
-              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200/70 hover:border-slate-300 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-md text-xs font-bold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200/70 hover:border-slate-300 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
               aria-label={`Call Dr. Hari Narayan Deuri at ${PHONE_NUMBER_DISPLAY}`}
             >
               <Phone className="w-3.5 h-3.5 text-medical-600" aria-hidden="true" />
@@ -271,11 +271,15 @@ function Navbar() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/70 hover:border-emerald-300 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-md text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/70 hover:border-emerald-300 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
               aria-label="Book appointment via WhatsApp"
             >
               <MessageCircle className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
               <span>WhatsApp</span>
+              <span className="relative flex h-1.5 w-1.5 ml-0.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+              </span>
             </a>
           </div>
 
@@ -283,7 +287,7 @@ function Navbar() {
           <div className="flex xl:hidden items-center gap-2">
             <a
               href={PHONE_NUMBER_LINK}
-              className="md:hidden p-2.5 rounded-xl text-medical-700 bg-medical-50 border border-medical-200/50 hover:bg-medical-100 transition-colors"
+              className="md:hidden p-2.5 rounded-md text-medical-700 bg-medical-50 border border-medical-200/50 hover:bg-medical-100 transition-colors"
               aria-label="Call clinic"
             >
               <Phone className="w-5 h-5 animate-pulse" aria-hidden="true" />
@@ -291,7 +295,7 @@ function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2.5 rounded-xl text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
+              className="p-2.5 rounded-md text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
               aria-label="Open mobile menu"
             >
               <Menu className="w-6 h-6" />
@@ -323,7 +327,7 @@ function Navbar() {
                 {/* Header of Drawer */}
                 <div className="flex items-center justify-between pb-5 border-b border-slate-100">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-medical-600 to-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/10">
+                    <div className="w-9 h-9 rounded-md bg-gradient-to-tr from-medical-600 to-medical-500 flex items-center justify-center text-white shadow-md shadow-medical-500/10">
                       <Eye className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <div>
@@ -334,7 +338,7 @@ function Navbar() {
                   <button
                     type="button"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="p-2 rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors"
                     aria-label="Close menu"
                   >
                     <X className="w-5 h-5" />
@@ -350,7 +354,7 @@ function Navbar() {
                         key={link.name}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold transition-all duration-200 ${
+                        className={`flex items-center justify-between px-4 py-3 rounded-lg text-sm font-bold transition-all duration-200 ${
                           isActive
                             ? "text-medical-600 bg-medical-50"
                             : "text-slate-700 hover:text-medical-600 hover:bg-slate-50"
@@ -367,7 +371,7 @@ function Navbar() {
                 <div className="pt-6 border-t border-slate-100 flex flex-col gap-3">
                   <a
                     href={PHONE_NUMBER_LINK}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-medical-700 bg-medical-50 hover:bg-medical-100 border border-medical-200 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-md text-sm font-bold text-medical-700 bg-medical-50 hover:bg-medical-100 border border-medical-200 transition-colors"
                   >
                     <Phone className="w-4 h-4" />
                     <span>Call: {PHONE_NUMBER_DISPLAY}</span>
@@ -376,7 +380,7 @@ function Navbar() {
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-md text-sm font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
                   >
                     <MessageCircle className="w-4 h-4 text-emerald-600" />
                     <span>WhatsApp Booking</span>
@@ -438,7 +442,7 @@ function HeroSection() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <a
                 href={PHONE_NUMBER_LINK}
-                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl text-base font-bold text-white bg-medical-600 hover:bg-medical-700 transition-all shadow-lg shadow-medical-600/25 focus:ring-4 focus:ring-medical-400"
+                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-md text-base font-bold text-white bg-medical-600 hover:bg-medical-700 transition-all shadow-lg shadow-medical-600/25 focus:ring-4 focus:ring-medical-400"
                 aria-label="Call clinic now for immediate eye consultation"
               >
                 <Phone className="w-5 h-5" aria-hidden="true" />
@@ -448,7 +452,7 @@ function HeroSection() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl text-base font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300/80 transition-all shadow-sm focus:ring-4 focus:ring-emerald-400"
+                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-md text-base font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300/80 transition-all shadow-sm focus:ring-4 focus:ring-emerald-400"
                 aria-label="Chat on WhatsApp with Dr. Hari Narayan Deuri"
               >
                 <MessageCircle className="w-5 h-5 text-emerald-600" aria-hidden="true" />
@@ -481,10 +485,10 @@ function HeroSection() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInUp}
           >
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-soft-xl relative">
+            <div className="bg-white p-6 sm:p-8 rounded-xl border border-slate-200/80 shadow-soft-xl relative">
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-medical-50 text-medical-600 rounded-xl">
+                  <div className="p-2.5 bg-medical-50 text-medical-600 rounded-md">
                     <Clock className="w-6 h-6" aria-hidden="true" />
                   </div>
                   <div>
@@ -501,7 +505,7 @@ function HeroSection() {
               {/* Two side-by-side timing cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Card 1: Narayanpur Clinic — Morning Timing */}
-                <div className="p-5 rounded-2xl bg-medical-50/70 border border-medical-200/70 flex flex-col justify-between">
+                <div className="p-5 rounded-lg bg-medical-50/70 border border-medical-200/70 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-bold uppercase tracking-wider text-medical-700 bg-medical-100 px-2 py-0.5 rounded">
@@ -525,7 +529,7 @@ function HeroSection() {
                 </div>
 
                 {/* Card 2: Gohpur Clinic — Evening Timing */}
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+                <div className="p-5 rounded-lg bg-slate-50 border border-slate-200 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-bold uppercase tracking-wider text-slate-700 bg-slate-200 px-2 py-0.5 rounded">
@@ -550,7 +554,7 @@ function HeroSection() {
               </div>
 
               {/* Emergency eye care note */}
-              <div className="mt-5 p-3.5 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center gap-3">
+              <div className="mt-5 p-3.5 rounded-md bg-amber-50 border border-amber-200/80 flex items-center gap-3">
                 <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" aria-hidden="true" />
                 <p className="text-xs sm:text-sm font-medium text-amber-900">
                   <strong>Emergency Eye Care Available:</strong> Prioritized immediate attention for ocular trauma and sudden vision loss.
@@ -581,7 +585,7 @@ function AboutDoctorSection() {
             variants={fadeInUp}
           >
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-medical-100 to-medical-200 border-4 border-white shadow-soft-xl relative flex items-center justify-center bg-slate-50">
+              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br from-medical-100 to-medical-200 border-4 border-white shadow-soft-xl relative flex items-center justify-center bg-slate-50">
                 <img
                   src={process.env.PUBLIC_URL + "/images/doctor-placeholder.jpg"}
                   alt="Dr. Hari Narayan Deuri - Best Eye Doctor in Narayanpur, Gohpur, and Bihpuriagaon, Assam"
@@ -593,8 +597,8 @@ function AboutDoctorSection() {
               </div>
 
               {/* Floating experience badge */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-white p-5 rounded-2xl shadow-soft-xl border border-slate-100 flex items-center gap-4 max-w-xs z-20">
-                <div className="w-12 h-12 rounded-xl bg-medical-500 text-white flex items-center justify-center shrink-0 font-bold text-lg">
+              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-white p-5 rounded-lg shadow-soft-xl border border-slate-100 flex items-center gap-4 max-w-xs z-20">
+                <div className="w-12 h-12 rounded-md bg-medical-500 text-white flex items-center justify-center shrink-0 font-bold text-lg">
                   8+
                 </div>
                 <div>
@@ -614,7 +618,7 @@ function AboutDoctorSection() {
             variants={fadeInUp}
           >
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-50 px-3 py-1 rounded-md">
+              <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-50 px-3 py-1 rounded">
                 About The Specialist
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -741,7 +745,7 @@ function ServicesSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded-md">
+          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded">
             Comprehensive Ophthalmology
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -767,10 +771,10 @@ function ServicesSection() {
                 key={idx}
                 variants={fadeInUp}
                 whileHover={{ y: -6 }}
-                className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-soft-md transition-all flex flex-col justify-between"
+                className="bg-white p-6 sm:p-7 rounded-lg border border-slate-200/80 shadow-soft-md transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center mb-5 shadow-sm">
+                  <div className="w-12 h-12 rounded-md bg-medical-50 text-medical-600 flex items-center justify-center mb-5 shadow-sm">
                     <IconComponent className="w-6 h-6" aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -870,7 +874,7 @@ function WhyChooseUsSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-50 px-3.5 py-1 rounded-md">
+          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-50 px-3.5 py-1 rounded">
             The Clinic Advantage
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -895,9 +899,9 @@ function WhyChooseUsSection() {
               <motion.div
                 key={idx}
                 variants={fadeInUp}
-                className="p-6 sm:p-7 rounded-2xl bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-medical-200 shadow-sm hover:shadow-soft-xl transition-all duration-300"
+                className="p-6 sm:p-7 rounded-lg bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-medical-200 shadow-sm hover:shadow-soft-xl transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-xl bg-medical-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                <div className="w-11 h-11 rounded-md bg-medical-600 text-white flex items-center justify-center mb-5 shadow-sm">
                   <IconComponent className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -948,7 +952,7 @@ function ConditionsTreatedSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded-md">
+          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded">
             Clinical Scope
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -972,7 +976,7 @@ function ConditionsTreatedSection() {
               key={idx}
               variants={fadeInUp}
               whileHover={{ scale: 1.05 }}
-              className={`px-5 py-3 rounded-2xl text-sm sm:text-base font-bold border shadow-sm cursor-default transition-transform ${item.color}`}
+              className={`px-5 py-3 rounded-lg text-sm sm:text-base font-bold border shadow-sm cursor-default transition-transform ${item.color}`}
             >
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 opacity-80" aria-hidden="true" />
@@ -1025,7 +1029,7 @@ function TestimonialsSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded-md">
+          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded">
             Patient Stories
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -1045,7 +1049,7 @@ function TestimonialsSection() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={fadeInUp}
-              className="bg-white p-7 sm:p-8 rounded-3xl border border-slate-200/80 shadow-soft-xl flex flex-col justify-between"
+              className="bg-white p-7 sm:p-8 rounded-xl border border-slate-200/80 shadow-soft-xl flex flex-col justify-between"
             >
               <div>
                 {/* 5-Star Rating */}
@@ -1121,7 +1125,7 @@ function FAQSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-50 px-3.5 py-1 rounded-md">
+          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-50 px-3.5 py-1 rounded">
             Patient Guide
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -1139,7 +1143,7 @@ function FAQSection() {
             return (
               <div
                 key={idx}
-                className="border border-slate-200 rounded-2xl overflow-hidden transition-colors"
+                className="border border-slate-200 rounded-lg overflow-hidden transition-colors"
               >
                 <button
                   type="button"
@@ -1204,7 +1208,7 @@ function ContactSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded-md">
+          <span className="text-xs font-bold uppercase tracking-widest text-medical-600 bg-medical-100 px-3.5 py-1 rounded">
             Get In Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
@@ -1218,7 +1222,7 @@ function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left: Contact Info & Action Buttons */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white p-7 sm:p-8 rounded-3xl border border-slate-200/80 shadow-soft-xl space-y-6">
+            <div className="bg-white p-7 sm:p-8 rounded-xl border border-slate-200/80 shadow-soft-xl space-y-6">
               <div>
                 <h3 className="text-2xl font-extrabold text-slate-900">
                   Dr. Hari Narayan Deuri
@@ -1231,7 +1235,7 @@ function ContactSection() {
               <div className="space-y-4 pt-2 border-t border-slate-100">
                 {/* Phone Contact */}
                 <div className="flex items-start gap-3.5">
-                  <div className="p-3 bg-medical-50 text-medical-600 rounded-xl shrink-0 mt-0.5">
+                  <div className="p-3 bg-medical-50 text-medical-600 rounded-md shrink-0 mt-0.5">
                     <Phone className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
@@ -1257,7 +1261,7 @@ function ContactSection() {
 
                 {/* Narayanpur Clinic Address */}
                 <div className="flex items-start gap-3.5">
-                  <div className="p-3 bg-medical-50 text-medical-600 rounded-xl shrink-0 mt-0.5">
+                  <div className="p-3 bg-medical-50 text-medical-600 rounded-md shrink-0 mt-0.5">
                     <MapPin className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
@@ -1278,7 +1282,7 @@ function ContactSection() {
 
                 {/* Gohpur Clinic Address */}
                 <div className="flex items-start gap-3.5">
-                  <div className="p-3 bg-slate-100 text-slate-700 rounded-xl shrink-0 mt-0.5">
+                  <div className="p-3 bg-slate-100 text-slate-700 rounded-md shrink-0 mt-0.5">
                     <MapPin className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
@@ -1302,7 +1306,7 @@ function ContactSection() {
               <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
                 <a
                   href={PHONE_NUMBER_LINK}
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-medical-600 hover:bg-medical-700 transition-all shadow-md shadow-medical-600/20"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-md text-sm font-bold text-white bg-medical-600 hover:bg-medical-700 transition-all shadow-md shadow-medical-600/20"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Call Clinic</span>
@@ -1311,7 +1315,7 @@ function ContactSection() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-md shadow-emerald-600/20"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-md text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-md shadow-emerald-600/20"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>WhatsApp</span>
@@ -1322,8 +1326,8 @@ function ContactSection() {
 
           {/* Right: Google Maps Embed Placeholder */}
           <div className="lg:col-span-7">
-            <div className="bg-white p-4 rounded-3xl border border-slate-200/80 shadow-soft-xl overflow-hidden">
-              <div className="aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl overflow-hidden bg-slate-100 relative border border-slate-200">
+            <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-soft-xl overflow-hidden">
+              <div className="aspect-[16/10] sm:aspect-[16/9] w-full rounded-lg overflow-hidden bg-slate-100 relative border border-slate-200">
                 {/* 
                   GOOGLE MAPS IFRAME PLACEHOLDER:
                   REPLACE WITH ACTUAL EMBED URL in the `src` attribute below when ready.
@@ -1400,7 +1404,7 @@ function Footer() {
           {/* Column 1: Doctor Identity & USP */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-medical-500 flex items-center justify-center text-white">
+              <div className="w-10 h-10 rounded-md bg-medical-500 flex items-center justify-center text-white">
                 <Eye className="w-5 h-5" aria-hidden="true" />
               </div>
               <div>
@@ -1447,11 +1451,11 @@ function Footer() {
               OPD Timings (Mon – Sat)
             </h4>
             <div className="space-y-3 text-sm">
-              <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
+              <div className="p-3 rounded-md bg-slate-800/80 border border-slate-700/60">
                 <p className="font-bold text-white">Narayanpur (Dristi Opticals)</p>
                 <p className="text-medical-400 font-extrabold mt-0.5">09:00 AM – 01:30 PM</p>
               </div>
-              <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
+              <div className="p-3 rounded-md bg-slate-800/80 border border-slate-700/60">
                 <p className="font-bold text-white">Gohpur (Laxmi Opticals)</p>
                 <p className="text-slate-200 font-extrabold mt-0.5">03:30 PM – 07:30 PM</p>
               </div>
@@ -1484,7 +1488,7 @@ function Footer() {
                         key={social.name}
                         href={social.href}
                         aria-label={`Visit Dr. Hari Narayan Deuri on ${social.name}`}
-                        className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-medical-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                        className="w-10 h-10 rounded-md bg-slate-800 hover:bg-medical-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
                       >
                         <SocialIcon className="w-4 h-4" aria-hidden="true" />
                       </a>
