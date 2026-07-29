@@ -1,0 +1,33 @@
+/* ==============================================================================
+   src/index.css
+   ============================================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-slate-800 font-sans leading-relaxed selection:bg-medical-100 selection:text-medical-900;
+  }
+
+  /* High-contrast accessible focus ring for keyboard navigation */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-4 ring-medical-400 ring-offset-2 ring-offset-white;
+  }
+}
+
+@layer utilities {
+  /* Utility for crisp text rendering particularly useful for medical typography */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
